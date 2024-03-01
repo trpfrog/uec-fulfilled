@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="学務情報システムの単位修得状況から現在必要単位数を満たしているかを一発で確認するブックマークレット">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
   <style>
@@ -69,24 +70,25 @@
       </p>
     </template>
     <p>
-      このページは、<a href="https://www.uec.ac.jp/campus/academic/">学務情報システム</a>の単位修得状況から残り単位数を計算するためのブックマークレット
+      <a href="https://www.uec.ac.jp/campus/academic/">学務情報システム</a>の単位修得状況から、現在自分が必要単位数を満たしているかを一発で確認するブックマークレット
     </p>
     <p>
       GitHub: <a href="https://github.com/trpfrog/uec-fulfilled">https://github.com/trpfrog/uec-fulfilled</a>
     </p>
 
-    <h2>Demo</h2>
-    <p>
-      以下のリンクをクリックすると下の単位修得状況の表が変化します。<br>(スクリプトの読み込みに数秒かかります)
-    </p>
-    <a x-bind:href="bookmarklet">残り単位数の表示</a>
-
     <h2>Installation</h2>
     <p>
-      上のリンクをブックマークバーにドラッグするか、下のコードをブックマークレットとして登録してください。
-      名前はなんでも良いです。
+      「<a x-bind:href="bookmarklet">残り単位数の表示</a>」←このリンクをブックマークバーにドラッグするか、下のコードをブックマークレットとして登録してください。
     </p>
     <pre x-text="bookmarklet"></pre>
+
+    <h2>Demo</h2>
+    <p>
+      導入したブックマークレットを使用するか、
+      「<a x-bind:href="bookmarklet" style="font-weight: bold">残り単位数の表示</a>」←これをクリックすると下の単位修得状況の表が変化します。
+      (スクリプトの読み込みに数秒かかります)
+    </p>
+
 
     <table x-data="{ records }">
       <tbody>
