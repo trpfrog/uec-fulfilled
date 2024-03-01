@@ -24,6 +24,10 @@ javascript:(function(){var s=document.createElement('script');s.src='https://trp
 
 Edge ではセキュリティ上の都合で動かないことがあるみたいです。(要検証)
 
+## デモ
+
+[こちら](https://trpfrog.github.io/uec-fulfilled/)から動作を確認できます。
+学務情報システムに入る権限がないけれど動作を確認したいという方 (？) はこちらをご利用ください。
 
 ## 開発者向け情報
 

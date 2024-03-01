@@ -9,6 +9,7 @@ on:
       - "src/**"
       - "scripts/build.ts"
       - "package.json"
+      - "demo.html"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,6 +43,9 @@ jobs:
         run: bun install
       - name: Build
         run: bun run build
+
+      - name: Copy index.html to dist
+        run: cp ./index.html dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
