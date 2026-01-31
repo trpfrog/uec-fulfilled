@@ -19,19 +19,6 @@ function addDataColumn(row: HTMLTableRowElement, data: string) {
   row.appendChild(td);
 }
 
-function setHoverEffect(
-  row: HTMLTableRowElement,
-  defaultColor: string,
-  hoverColor: string,
-) {
-  row.addEventListener("mouseenter", () => {
-    row.style.setProperty("background-color", hoverColor, "important");
-  });
-  row.addEventListener("mouseleave", () => {
-    row.style.setProperty("background-color", defaultColor, "important");
-  });
-}
-
 export function writeColumn(creditTable: HTMLTableElement) {
   addHeaderColumn(creditTable, "残り単位数");
 
@@ -45,11 +32,19 @@ export function writeColumn(creditTable: HTMLTableElement) {
     const isCompleted = creditsLeft <= 0;
     if (isCompleted) {
       row.style.backgroundColor = "#d8ed7b";
-      setHoverEffect(row, "#d8ed7b", "#eef9bf");
+      const existingOnMouseOver = row.onmouseover;
+      const existingOnMouseOut = row.onmouseout;
+      row.onmouseover = (event) => {
+        existingOnMouseOver?.call(row, event);
+        row.style.setProperty("background-color", "#eef9bf", "important");
+      };
+      row.onmouseout = (event) => {
+        existingOnMouseOut?.call(row, event);
+        row.style.setProperty("background-color", "#c4e06a", "important");
+      };
       addDataColumn(row, creditsLeft > -0.1 ? "✔︎" : `✔︎ (+${-creditsLeft})`);
     } else {
       addDataColumn(row, creditsLeft.toString());
-      setHoverEffect(row, "#00000008", "#ffffffb3");
     }
   }
 }
