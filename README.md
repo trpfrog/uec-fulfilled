@@ -66,6 +66,14 @@ javascript:(function(){var s=document.createElement('script');s.src='http://loca
 bun run build
 ```
 
+### Lint / Format
+
+次のコマンドで lint と format を実行できます。
+
+```sh
+bun run check-write
+```
+
 ## その他
 
 卒業見込み学生の成績開示日の翌日にリリースするな

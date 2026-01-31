@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "bun run scripts/build.ts",
-    "dev": "bun run scripts/dev.ts"
+    "dev": "bun run scripts/dev.ts",
+    "check-write": "biome check --write"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",
