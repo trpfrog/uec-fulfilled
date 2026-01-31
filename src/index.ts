@@ -38,7 +38,6 @@ function main() {
     alert("このブックマークレットは学務情報システム上でのみ使用できます。");
     return;
   }
-
   try {
     const creditTable = getCreditTable();
     if (isAlreadyAdded(creditTable)) {
