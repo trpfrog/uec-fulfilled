@@ -5,6 +5,7 @@
   "scripts": {
     "build": "bun run scripts/build.ts",
     "dev": "bun run scripts/dev.ts",
+    "check": "biome check",
     "check-write": "biome check --write"
   },
   "devDependencies": {
