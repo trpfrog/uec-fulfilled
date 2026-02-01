@@ -32,6 +32,8 @@ export function writeColumn(creditTable: HTMLTableElement) {
     const isCompleted = creditsLeft <= 0;
     if (isCompleted) {
       row.style.backgroundColor = "#d8ed7b";
+
+      // 学務情報システムでは onmouseover / onmouseout で背景色が上書きされるため、これらをさらに上書き
       const existingOnMouseOver = row.onmouseover;
       const existingOnMouseOut = row.onmouseout;
       row.onmouseover = (event) => {
@@ -42,6 +44,7 @@ export function writeColumn(creditTable: HTMLTableElement) {
         existingOnMouseOut?.call(row, event);
         row.style.setProperty("background-color", "#c4e06a", "important");
       };
+
       addDataColumn(row, creditsLeft > -0.1 ? "✔︎" : `✔︎ (+${-creditsLeft})`);
     } else {
       addDataColumn(row, creditsLeft.toString());
