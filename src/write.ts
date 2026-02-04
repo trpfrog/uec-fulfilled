@@ -1,3 +1,6 @@
+const COMPLETED_BACKGROUND_COLOR = "#d8ed7b";
+const COMPLETED_HOVER_BACKGROUND_COLOR = "#eef9bf";
+
 function addHeaderColumn(table: HTMLTableElement, header: string) {
   const tr = table?.querySelector("tr");
   if ((tr?.children.length ?? 0) > 3) {
@@ -31,7 +34,28 @@ export function writeColumn(creditTable: HTMLTableElement) {
     const creditsLeft = required - acquired;
     const isCompleted = creditsLeft <= 0;
     if (isCompleted) {
-      row.style.backgroundColor = "#d8ed7b";
+      row.style.backgroundColor = COMPLETED_BACKGROUND_COLOR;
+
+      // 学務情報システムでは onmouseover / onmouseout で背景色が上書きされるため、これらをさらに上書き
+      const existingOnMouseOver = row.onmouseover;
+      const existingOnMouseOut = row.onmouseout;
+      row.onmouseover = (event) => {
+        existingOnMouseOver?.call(row, event);
+        row.style.setProperty(
+          "background-color",
+          COMPLETED_HOVER_BACKGROUND_COLOR,
+          "important",
+        );
+      };
+      row.onmouseout = (event) => {
+        existingOnMouseOut?.call(row, event);
+        row.style.setProperty(
+          "background-color",
+          COMPLETED_BACKGROUND_COLOR,
+          "important",
+        );
+      };
+
       addDataColumn(row, creditsLeft > -0.1 ? "✔︎" : `✔︎ (+${-creditsLeft})`);
     } else {
       addDataColumn(row, creditsLeft.toString());
