@@ -14,7 +14,7 @@ function getCreditTable(): HTMLTableElement {
   // tr に 区分, 所要単位, 修得単位 の含まれているテーブルを取得
   for (const table of tables) {
     const row = table.querySelector("tr")?.innerHTML;
-    if (["区分", "所要単位", "修得単位"].every((s) => row?.includes(s))) {
+    if (["区分", "卒業所要単位", "修得済み単位"].every((s) => row?.includes(s))) {
       return table;
     }
   }
